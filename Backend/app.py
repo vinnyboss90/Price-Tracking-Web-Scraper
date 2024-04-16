@@ -1,8 +1,21 @@
 import subprocess
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_cors import CORS
+
+
+
+app = Flask(__name__)
+
+@app.route('/')
+def serve_react_app():
+    return send_from_directory('path_to_your_react_build_directory', 'index.html')
+
+# Add more routes/API endpoints as needed
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 app = Flask(__name__)
 CORS(app)
